@@ -22,9 +22,15 @@ pipeline {
 
         stage('Publish Portal in Jenkins') {
             steps {
-                publishHTML([reportDir: '.', 
-                             reportFiles: 'index.html', 
-                             reportName: 'Notes Portal'])
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: '.',
+                reportFiles: 'index.html',
+                reportName: 'Notes Portal'
+            ])
+	
             }
         }
     }
