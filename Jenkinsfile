@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/ashu501/Note_Portal.git'
+                git 'https://github.com/ashu501/Notes_Portal.git'
             }
         }
 
