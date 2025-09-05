@@ -2,37 +2,35 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/ashu501/Notes_Portal.git'
+                git branch: 'main', url: 'https://github.com/ashu501/Notes-Portal.git'
             }
         }
 
-        stage('Deploy to Tomcat') {
+        stage('Deploy') {
             steps {
                 sh '''
-                TOMCAT_PATH=/var/lib/tomcat9/webapps/Note_Portal
-
-                rm -rf $TOMCAT_PATH/*
-                mkdir -p $TOMCAT_PATH
-                cp -r * $TOMCAT_PATH/
+                    mkdir -p deployed_site
+                    cp -r *.html deployed_site/ || true
+                    cp -r assets deployed_site/ || true
+                    cp -r notes deployed_site/ || true
+                    cp -r c-programs deployed_site/ || true
+                    cp -r python-programs deployed_site/ || true
                 '''
             }
         }
+    }
 
-        stage('Publish Portal in Jenkins') {
-            steps {
-            publishHTML([
+    post {
+        success {
+            publishHTML(target: [
                 allowMissing: false,
-                alwaysLinkToLastBuild: true,
                 keepAll: true,
-                reportDir: '.',
+                reportDir: 'deployed_site',
                 reportFiles: 'index.html',
-                reportName: 'Notes Portal'
+                reportName: 'Notes Portal Website'
             ])
-	
-            }
         }
     }
 }
-
