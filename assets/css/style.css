@@ -126,3 +126,40 @@ nav a:hover{
     color:#555;
     line-height:1.6;
 }
+/* ==========================
+   Search Section
+========================== */
+
+.search-section{
+    text-align:center;
+    padding:50px 20px;
+}
+
+.search-section h2{
+    color:#0d6efd;
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+.search-section input{
+    width:350px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+}
+
+.search-section button{
+    padding:12px 25px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+    margin-left:10px;
+}
+
+.search-section button:hover{
+    background:#084298;
+}
